@@ -43,6 +43,7 @@ void ABall::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 	InputComponent->BindAxis("MoveUp", this, &ABall::MoveUp);
 	InputComponent->BindAxis("MoveRight", this, &ABall::MoveRight);
+	InputComponent->BindAction("Jump",IE_Pressed, this, &ABall::Jump);
 
 }
 
@@ -57,4 +58,5 @@ void ABall::MoveRight(float value)
 	FVector ForceToAdd = FVector(0, 1, 0) * value * MovementForce;
 	StatMeshComp->AddForce(ForceToAdd);
 }
+
 

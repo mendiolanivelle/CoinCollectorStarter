@@ -42,8 +42,15 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Basic Component")
 		float MovementForce;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Basic Component")
+		float JumpForce;
+
+	UFUNCTION(BlueprintImplementableEvent)
+		void Jump();
+
+
 	void MoveUp(float value);
 	void MoveRight(float value);
-
+	
 
 };

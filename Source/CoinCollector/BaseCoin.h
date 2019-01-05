@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Components/StaticMeshComponent.h"
+#include "Ball.h"
 #include "BaseCoin.generated.h"
 
 UCLASS()
@@ -38,4 +39,7 @@ public:
 	float RotationRate;
 
 	void PlayCustomDeath();
+
+	UFUNCTION(BlueprintNativeEvent)
+		void ActorOverlap_Implementation(AActor* OverlappedActor, AActor* OtherActor);
 };

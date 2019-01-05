@@ -14,12 +14,17 @@ ABaseCoin::ABaseCoin()
 	CoinMesh->SetupAttachment(Root);
 	CoinMesh->SetCollisionResponseToAllChannels(ECollisionResponse::ECR_Overlap);
 	RotationRate = 100;
+	OnActorBeginOverlap.AddDynamic(this, &ABaseCoin::ActorOverlap);
+		
+
+	
 }
 
 // Called when the game starts or when spawned
 void ABaseCoin::BeginPlay()
 {
 	Super::BeginPlay();
+	UE_LOG(LogTemp, Warning, TEXT("TALTAL"));
 	
 }
 
@@ -38,4 +43,14 @@ void ABaseCoin::PlayCustomDeath()
 {
 	RotationRate = 1500;
 	GetWorldTimerManager().SetTimer(DeathTimerHandle, this, &ABaseCoin::DeathTimerComplete, 0.5f, false);
+}
+
+void ABaseCoin::ActorOverlap(AActor* OverlappedActor, AActor* OtherActor)
+{
+	if (Cast<ABall>(OtherActor) != nullptr)
+	{
+		Destroy();
+	}
+
+	UE_LOG(LogTemp, Warning, TEXT("TALTAL"));
 }
